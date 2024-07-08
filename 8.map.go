@@ -35,6 +35,41 @@ func main() {
 		fmt.Println(key, " \t:", value)
 	}
 
-	// deteksi keberadaan item dengan key tertentu
+	// menghapus item map
+	map1 := map[string]int{
+		"rio":   40,
+		"rian":  50,
+		"linda": 60,
+	}
 
+	fmt.Println(map1)
+
+	delete(map1, "linda")
+
+	fmt.Println(map1)
+
+	// deteksi keberadaan item dengan key tertentu
+	data2 := map[string]int{
+		"rio":   33,
+		"rian":  44,
+		"linda": 11,
+	}
+	value, isExist := data2["daos"]
+
+	if isExist {
+		fmt.Println(value)
+	} else {
+		fmt.Println("data daos tidak tersedia")
+	}
+
+	// kombinasi slice dan map
+	data3 := []map[string]string{
+		{"name": "rio", "gender": "male"},
+		{"name": "linda", "gender": "female"},
+		{"name": "rian", "gender": "male"},
+	}
+
+	for _, data := range data3 {
+		fmt.Println(data["name"], data["gender"])
+	}
 }
