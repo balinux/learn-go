@@ -103,6 +103,21 @@ func main() {
 	for _, data := range sliceStructData {
 		fmt.Println("name:", data.name, "age:", data.age)
 	}
+
+	// initialisasi slice anonymous struct
+	allStructSliceData := []struct {
+		structSlice
+		grade int
+	}{
+		{structSlice: structSlice{"rio", 33}, grade: 400},
+		{structSlice: structSlice{"linda", 37}, grade: 700},
+		{structSlice: structSlice{"rian", 23}, grade: 500},
+	}
+
+	fmt.Println("section slice anonymous struct")
+	for _, v := range allStructSliceData {
+		fmt.Println("name:", v.structSlice.name, "age:", v.structSlice.age, "grade:", v.age)
+	}
 }
 
 type structSlice struct {
