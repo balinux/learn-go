@@ -53,6 +53,48 @@ func main() {
 	fmt.Println("age:", embeddedData.age)
 	fmt.Println("age:", embeddedData.embedded1.age)
 	fmt.Println("grade:", embeddedData.grade)
+
+	// embedded struct dengan nama property yang sama
+	samepropertyData := sameproperty2{}
+	samepropertyData.name = "rio"
+	samepropertyData.sameproperty1.age = 22
+	samepropertyData.age = 33
+	samepropertyData.grade = 2222
+
+	fmt.Println("struct wish same property")
+	fmt.Println("name:", samepropertyData.name)
+	fmt.Println("age:", samepropertyData.sameproperty1.age)
+	fmt.Println("age:", samepropertyData.age)
+	fmt.Println("grade:", samepropertyData.grade)
+
+	subData1 := substruct1{name: "rio", age: 22}
+	subData2 := substruct2{substruct1: subData1, grade: 400}
+
+	fmt.Println("substc section")
+	fmt.Println("name:", subData2.name)
+	fmt.Println("age:", subData2.age)
+	fmt.Println("grade:", subData2.grade)
+}
+
+type substruct1 struct {
+	name string
+	age  int
+}
+
+type substruct2 struct {
+	substruct1
+	grade int
+}
+
+type sameproperty1 struct {
+	name string
+	age  int
+}
+
+type sameproperty2 struct {
+	sameproperty1
+	age   int
+	grade int
 }
 
 type embedded1 struct {
