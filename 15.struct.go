@@ -91,6 +91,23 @@ func main() {
 	fmt.Println("age:", structAnonymData.anonymStruct.age)
 	fmt.Println("grade:", structAnonymData.grade)
 
+	// kombinasi slice dengan struct
+
+	sliceStructData := []structSlice{
+		{name: "rio", age: 22},
+		{name: "linda", age: 44},
+		{name: "rian", age: 55},
+	}
+
+	fmt.Println("slice with struct")
+	for _, data := range sliceStructData {
+		fmt.Println("name:", data.name, "age:", data.age)
+	}
+}
+
+type structSlice struct {
+	name string
+	age  int
 }
 
 type anonymStruct struct {
