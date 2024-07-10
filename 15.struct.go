@@ -118,6 +118,13 @@ func main() {
 	for _, v := range allStructSliceData {
 		fmt.Println("name:", v.structSlice.name, "age:", v.structSlice.age, "grade:", v.age)
 	}
+
+	// type alias
+	type aliasStruckSlice = structSlice
+
+	dataAlias := aliasStruckSlice{name: "rio", age: 22}
+	fmt.Println("alias struckt ")
+	fmt.Print("data alias:", dataAlias)
 }
 
 type structSlice struct {
