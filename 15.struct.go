@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	type student struct {
@@ -74,6 +76,26 @@ func main() {
 	fmt.Println("name:", subData2.name)
 	fmt.Println("age:", subData2.age)
 	fmt.Println("grade:", subData2.grade)
+
+	// anonymous struct
+	structAnonymData := struct {
+		anonymStruct
+		grade int
+	}{}
+
+	structAnonymData.anonymStruct = anonymStruct{"rio", 33}
+	structAnonymData.grade = 22
+
+	fmt.Println("anonymous struct")
+	fmt.Println("name:", structAnonymData.anonymStruct.name)
+	fmt.Println("age:", structAnonymData.anonymStruct.age)
+	fmt.Println("grade:", structAnonymData.grade)
+
+}
+
+type anonymStruct struct {
+	name string
+	age  int
 }
 
 type substruct1 struct {
