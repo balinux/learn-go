@@ -1,9 +1,11 @@
 package main
 
 import (
+	initfunction "belajar-golang-level-akses/initFunction"
 	"belajar-golang-level-akses/library"
 	. "belajar-golang-level-akses/prefixgo"
 	"belajar-golang-level-akses/student"
+	"fmt"
 
 	// alias
 	f "fmt"
@@ -22,4 +24,8 @@ func main() {
 	prefixdot := PrefixExport{Message: "wow"}
 	f.Println("prefix import titik")
 	f.Println("hallo prefixdot:", prefixdot.Message)
+
+	// memanggil fungsi init()
+	fmt.Println("Name from init:", initfunction.Student.Name)
+	fmt.Println("Age from init:", initfunction.Student.Age)
 }
