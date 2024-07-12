@@ -4,7 +4,9 @@ import (
 	"belajar-golang-level-akses/library"
 	. "belajar-golang-level-akses/prefixgo"
 	"belajar-golang-level-akses/student"
-	"fmt"
+
+	// alias
+	f "fmt"
 )
 
 func main() {
@@ -12,12 +14,12 @@ func main() {
 
 	// penerapan export struct
 	s1 := student.Student{"rio", 22}
-	fmt.Println("stuct exported")
-	fmt.Println("hallo bro", s1.Name)
-	fmt.Println("age", s1.Name)
+	f.Println("stuct exported")
+	f.Println("hallo bro", s1.Name)
+	f.Println("age", s1.Name)
 
 	// perepan import prefix titil
 	prefixdot := PrefixExport{Message: "wow"}
-	fmt.Println("prefix import titik")
-	fmt.Println("hallo prefixdot:", prefixdot.Message)
+	f.Println("prefix import titik")
+	f.Println("hallo prefixdot:", prefixdot.Message)
 }
