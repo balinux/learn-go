@@ -41,4 +41,14 @@ func main() {
 	dataCasting = []string{"sss", "sdasd"}
 	sambung := strings.Join(dataCasting.([]string), ", ")
 	fmt.Println(sambung)
+
+	// casting variabel interface kosong ke object pointer
+	type secretstruct struct {
+		name string
+		age  int
+	}
+
+	var secretData interface{} = &secretstruct{name: "rio", age: 22}
+	name := secretData.(*secretstruct).name
+	fmt.Println("secret interface:", name)
 }
