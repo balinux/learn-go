@@ -6,30 +6,32 @@ import (
 )
 
 func main() {
-	// mendari type data dan value menggunakan reflect
+	// Mendapatkan tipe data dan nilai menggunakan reflect
 	data := 12
 	reflectData := reflect.ValueOf(data)
 
 	fmt.Println("value data:", reflectData)
 	fmt.Println("type variabel:", reflectData.Type())
 
-	// megnakses nilai dalam bentuk Interface{}
+	// Mengakses nilai dalam bentuk Interface{}
 	fmt.Println("nilai variabel:", reflectData.Interface())
-	// mengambil nilainya
-	nilaireflectData := reflectData.Interface().(int)
-	fmt.Println(nilaireflectData)
 
-	x1 := &xxx{Name: "rio", Age: 33}
+	// Mengambil nilainya
+	nilaiReflectData := reflectData.Interface().(int)
+	fmt.Println(nilaiReflectData)
+
+	x1 := &Xxx{Name: "rio", Age: 33}
 	x1.getPropertyValue()
 }
 
-type xxx struct {
+// xxx struct untuk mendemonstrasikan reflect
+type Xxx struct {
 	Name string
 	Age  int
 }
 
-// peraksesan informasi properti variabel objek
-func (x *xxx) getPropertyValue() {
+// Akses informasi properti variabel objek
+func (x *Xxx) getPropertyValue() {
 	reflectValue := reflect.ValueOf(x)
 
 	if reflectValue.Kind() == reflect.Ptr {
@@ -38,7 +40,7 @@ func (x *xxx) getPropertyValue() {
 
 	reflectType := reflectValue.Type()
 
-	for i := 0; i <= reflectValue.NumField(); i++ {
+	for i := 0; i < reflectValue.NumField(); i++ {
 		fmt.Println("nama:  ", reflectType.Field(i).Name)
 		fmt.Println("tipe data:  ", reflectType.Field(i).Type)
 		fmt.Println("nilai:  ", reflectValue.Field(i).Interface())
