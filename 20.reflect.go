@@ -22,6 +22,28 @@ func main() {
 
 	x1 := &Xxx{Name: "rio", Age: 33}
 	x1.getPropertyValue()
+
+	//
+	//mengakses informasi method variabel object dengan reflect
+	bakso := &Food{Name: "bakso", Taste: "good"}
+	fmt.Println("nama:", bakso.Name)
+
+	reflectBakso := reflect.ValueOf(bakso)
+	methodBakso := reflectBakso.MethodByName("SetName")
+	methodBakso.Call([]reflect.Value{
+		reflect.ValueOf("sossis"),
+	})
+
+	fmt.Println("nama makanan baru:", bakso.Name)
+}
+
+type Food struct {
+	Name  string
+	Taste string
+}
+
+func (f *Food) SetName(name string) {
+	f.Name = name
 }
 
 // xxx struct untuk mendemonstrasikan reflect
