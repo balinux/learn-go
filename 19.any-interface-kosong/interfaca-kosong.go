@@ -51,4 +51,15 @@ func main() {
 	var secretData interface{} = &secretstruct{name: "rio", age: 22}
 	name := secretData.(*secretstruct).name
 	fmt.Println("secret interface:", name)
+
+	// kobinasi slice, map, interface kosong
+	dataSlice := []map[string]interface{}{
+		{"name": "aaa", "age": 33},
+		{"name": "vaa", "age": 55},
+		{"name": "vga", "age": 44},
+	}
+
+	for _, v := range dataSlice {
+		fmt.Println("name:", v["name"])
+	}
 }
