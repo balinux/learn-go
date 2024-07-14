@@ -1,8 +1,10 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"strconv"
+	"strings"
 )
 
 func main() {
@@ -20,4 +22,22 @@ func main() {
 		fmt.Println(number, "is not a number")
 		fmt.Println(err.Error())
 	}
+
+	// membuat custom error
+	var name string
+	fmt.Print("masukkan nama:")
+	fmt.Scanln(&name)
+	if valid, err := validate(name); valid {
+		fmt.Println("halo:", name)
+	} else {
+		fmt.Println(err.Error())
+	}
+}
+
+// membuat fungsi untuk handle custom error
+func validate(input string) (bool, error) {
+	if strings.TrimSpace(input) == "" {
+		return false, errors.New("cant not be empty")
+	}
+	return true, nil
 }
