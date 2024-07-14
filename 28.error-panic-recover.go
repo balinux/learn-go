@@ -24,6 +24,10 @@ func main() {
 	}
 
 	// membuat custom error
+	defer catch()
+
+	// menambah recovery untuk panic
+
 	var name string
 	fmt.Print("masukkan nama:")
 	fmt.Scanln(&name)
@@ -31,8 +35,17 @@ func main() {
 		fmt.Println("halo:", name)
 	} else {
 		// contoh penggunaan panic
-		// panic(err.Error()) // response : /Users/yhotie/Documents/code/go/learn-go/28.error-panic-recover.go:34 +0x38c
+		panic(err.Error()) // response : /Users/yhotie/Documents/code/go/learn-go/28.error-panic-recover.go:34 +0x38c
 		fmt.Println("end")
+	}
+}
+
+// sebuah fungsi catch untuk recovery panic
+func catch() {
+	if r := recover(); r != nil {
+		fmt.Println("error occured", r)
+	} else {
+		fmt.Println("application running perfecetly")
 	}
 }
 
