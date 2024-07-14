@@ -30,7 +30,9 @@ func main() {
 	if valid, err := validate(name); valid {
 		fmt.Println("halo:", name)
 	} else {
-		fmt.Println(err.Error())
+		// contoh penggunaan panic
+		// panic(err.Error()) // response : /Users/yhotie/Documents/code/go/learn-go/28.error-panic-recover.go:34 +0x38c
+		fmt.Println("end")
 	}
 }
 
