@@ -36,6 +36,20 @@ func main() {
 	//  run: curl -d "name=Joe Smith" -d "email=joe@yhotie.com" http://localhost:8080/save
 	e.POST("/save", save)
 
+	// handling request
+	// test: curl -X POST -H "Content-Type: application/json" -d '{"name":"John Doe", "email":"john@example.com"}' http://localhost:1323/user/example
+	type User struct {
+		Name  string `json:"name" xml:"name" form:"name" query:"name"`
+		Email string `json:"email" xml:"email" form:"email" query:"email"`
+	}
+	e.POST("/user/example", func(c echo.Context) error {
+		u := new(User)
+		if err := c.Bind(u); err != nil {
+			return err
+		}
+		return c.JSON(http.StatusCreated, u)
+	})
+
 	// start server
 	e.Logger.Fatal(e.Start(":8080"))
 }
