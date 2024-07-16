@@ -32,8 +32,19 @@ func main() {
 	// http://localhost:8080/show?name=rio%20jp&age=22
 	e.GET("/show", showQueryParam)
 
+	// form aplication/x-www-form-urlencoded
+	//  run: curl -d "name=Joe Smith" -d "email=joe@yhotie.com" http://localhost:8080/save
+	e.POST("/save", save)
+
 	// start server
 	e.Logger.Fatal(e.Start(":8080"))
+}
+
+func save(c echo.Context) error {
+	// get name and email
+	name := c.FormValue("name")
+	email := c.FormValue("email")
+	return c.String(http.StatusOK, "name: "+name+", email: "+email)
 }
 
 func showQueryParam(c echo.Context) error {
