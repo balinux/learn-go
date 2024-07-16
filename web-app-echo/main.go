@@ -28,8 +28,18 @@ func main() {
 	// user path with external handler
 	e.GET("/user/:name", handlerName)
 
+	// query parameter
+	// http://localhost:8080/show?name=rio%20jp&age=22
+	e.GET("/show", showQueryParam)
+
 	// start server
 	e.Logger.Fatal(e.Start(":8080"))
+}
+
+func showQueryParam(c echo.Context) error {
+	name := c.QueryParam("name")
+	age := c.QueryParam("age")
+	return c.String(http.StatusOK, "name: "+name+", age: "+age)
 }
 
 func handlerName(c echo.Context) error {
