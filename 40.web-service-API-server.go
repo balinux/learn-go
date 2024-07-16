@@ -1,8 +1,10 @@
 package main
 
-import "encoding/json"
-import "net/http"
-import "fmt"
+import (
+	"encoding/json"
+	"fmt"
+	"net/http"
+)
 
 type student struct {
 	ID    string
@@ -11,10 +13,10 @@ type student struct {
 }
 
 var data = []student{
-	student{"E001", "ethan", 21},
-	student{"W001", "wick", 22},
-	student{"B001", "bourne", 23},
-	student{"B002", "bond", 23},
+	{"E001", "ethan", 21},
+	{"W001", "wick", 22},
+	{"B001", "bourne", 23},
+	{"B002", "bond", 23},
 }
 
 func main() {
@@ -48,7 +50,7 @@ func user(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	if r.Method == "GET" {
-		var id = r.FormValue("id")
+		id := r.FormValue("id")
 		var result []byte
 		var err error
 

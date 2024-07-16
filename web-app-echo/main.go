@@ -18,6 +18,21 @@ func main() {
 		return c.String(http.StatusOK, "ini halaman aboout")
 	})
 
+	// path parameter
+	e.GET("/users/:id", func(c echo.Context) error {
+		// user id from path /users/:id
+		id := c.Param("id")
+		return c.String(http.StatusOK, "user id:"+id)
+	})
+
+	// user path with external handler
+	e.GET("/user/:name", handlerName)
+
 	// start server
 	e.Logger.Fatal(e.Start(":8080"))
+}
+
+func handlerName(c echo.Context) error {
+	name := c.Param("name")
+	return c.String(http.StatusOK, name)
 }
