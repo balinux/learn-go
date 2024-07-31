@@ -56,3 +56,13 @@ func AddHaircut(newHaircut models.Haircut) (int64, error) {
 	}
 	return result.LastInsertId()
 }
+
+func DeleteHaircut(id int) error {
+	_, err := databases.DB.Exec("DELETE FROM haircuts where id=?", id)
+	return err
+}
+
+func UpdateHaircut(updatehaircut models.Haircut) error {
+	_, err := databases.DB.Exec("UPDATE haircuts SET name =?, description=?, price=? WHERE id=?", updatehaircut.Name, updatehaircut.Description, updatehaircut.Price, updatehaircut.ID)
+	return err
+}

@@ -11,4 +11,6 @@ func RegisterRouter(e *echo.Echo) {
 	e.GET("/api/haircuts", handlers.GetHaircuts)
 	e.GET("/api/haircuts/:id", handlers.GetHaircut)
 	e.POST("/api/haircuts", handlers.CreteHairCut)
+	e.DELETE("/api/haricuts/:id", handlers.DeleteHaircut)
+	e.PUT("/api/haircuts/:id", handlers.UpdateHaircut)
 }
