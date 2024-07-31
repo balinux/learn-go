@@ -9,6 +9,10 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+func Welcome(c echo.Context) error {
+	return c.JSON(http.StatusOK, echo.Map{"message": "welcome to haircuts api"})
+}
+
 func GetHaircuts(c echo.Context) error {
 	haircuts, err := services.GetAllHaircut()
 	if err != nil {

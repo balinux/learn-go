@@ -7,6 +7,7 @@ import (
 )
 
 func RegisterRouter(e *echo.Echo) {
+	e.GET("/", handlers.Welcome)
 	e.GET("/api/haircuts", handlers.GetHaircuts)
 	e.GET("/api/haircuts/:id", handlers.GetHaircut)
 	e.POST("/api/haircuts", handlers.CreteHairCut)
