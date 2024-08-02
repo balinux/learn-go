@@ -6,9 +6,14 @@ import (
 	"haircut-api-go-gin-gorm-mysql/repositories"
 	"haircut-api-go-gin-gorm-mysql/routes"
 	"haircut-api-go-gin-gorm-mysql/services"
+
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
+	// set the gin moe
+	gin.SetMode(gin.ReleaseMode)
+
 	// config inisialisasi database koneksi
 	config.ConnectDatabase()
 
