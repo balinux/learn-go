@@ -10,7 +10,7 @@ func SetupRouter(haircutController *controllers.HaircutController) *gin.Engine {
 	router := gin.Default()
 	v1 := router.Group("/api/v1")
 	{
-		v1.GET("/haricuts", haircutController.GetAllHaircuts)
+		v1.GET("/haircuts", haircutController.GetAllHaircuts)
 	}
 	return router
 }

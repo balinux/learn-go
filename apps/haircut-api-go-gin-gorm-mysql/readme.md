@@ -19,3 +19,11 @@ api yang dibuat untuk hair style denga go gin gorm dan database mysql
 │   └── routes.go
 └── main.go
 ```
+
+## running podman - build image
+
+`podman build -t haircut-image .`
+
+## podman - run container
+
+`podman  run -p 8000:8000 -it --name haircut-container haircut-app`
