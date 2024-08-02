@@ -26,4 +26,12 @@ api yang dibuat untuk hair style denga go gin gorm dan database mysql
 
 ## podman - run container
 
-`podman  run -p 8000:8000 -it --name haircut-container haircut-app`
+`podman run -d -p 9999:8000 -it --name haircut-container haircut-image`
+
+## podman stop container
+
+`podman container stop <ID>`
+
+## container delete all container
+
+`podman rm $(podman ps -a -q)`
