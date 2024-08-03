@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"go-telegram-bot/services"
 	"log"
 	"os"
 
@@ -35,10 +36,33 @@ func main() {
 			log.Printf("[%s] %s", update.Message.From.UserName, update.Message.Text)
 			msg := tgbotapi.NewMessage(update.Message.Chat.ID, " kamu mengirim chat: "+update.Message.Text)
 
+			if update.Message.IsCommand() {
+				handleCommand(bot, update.Message)
+			}
 			// optional jika menamah bagian ini maka akan mereply message
 			msg.ReplyToMessageID = update.Message.MessageID
-
 			bot.Send(msg)
 		}
 	}
+}
+
+func handleCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) {
+	switch message.Command() {
+	case "weather":
+		weatherCommand(bot, message)
+	default:
+		weatherCommand(bot, message)
+	}
+}
+
+func weatherCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) {
+	city := "Denpasar"
+	weater, err := services.GetWeather(city)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	stringMessage := fmt.Sprintf("cuaca kota %s adalah %v celcius", weater.Name, weater.Main.Temp)
+	msg := tgbotapi.NewMessage(message.Chat.ID, stringMessage)
+	bot.Send(msg)
 }
