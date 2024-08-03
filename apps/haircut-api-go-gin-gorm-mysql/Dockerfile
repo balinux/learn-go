@@ -1,9 +1,12 @@
-# FROM golang:1.22-alpine
-FROM docker.io/library/golang:1.22-alpine
+FROM docker.io/library/golang:1.22-alpine AS build
 WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download
 COPY . .
-RUN go build -o /haircut-app
+RUN CGO_ENABLED=0 go build -o haircut-app .
+
+# add stage for scratch image
+FROM scratch
+COPY --from=build /app/haircut-app /haircut-app
 EXPOSE 8000
 CMD [ "/haircut-app" ]
