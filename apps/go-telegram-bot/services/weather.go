@@ -6,14 +6,24 @@ import (
 	"go-telegram-bot/models"
 	"io"
 	"net/http"
+	"os"
+
+	"github.com/joho/godotenv"
 )
 
 const (
-	apiKey  = "28ea9963ad1cc250642c93f252e9cd22"
 	baseURL = "https://api.openweathermap.org/data/2.5/weather"
 )
 
+func init() {
+	if err := godotenv.Load(); err != nil {
+		fmt.Println("gagal memuat file .env")
+	}
+}
+
 func GetWeather(city string) (*models.WeatherResponse, error) {
+	apiKey := os.Getenv("OPENWEATHER_API_KEY")
+
 	url := fmt.Sprintf("%s?q=%s&appid=%s&units=metric", baseURL, city, apiKey)
 
 	// request data
