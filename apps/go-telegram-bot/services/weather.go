@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"go-telegram-bot/models"
 	"io"
+	"log"
 	"net/http"
 	"os"
 
@@ -17,7 +18,7 @@ const (
 
 func init() {
 	if err := godotenv.Load(); err != nil {
-		fmt.Println("gagal memuat file .env")
+		log.Fatal(err)
 	}
 }
 
