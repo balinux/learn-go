@@ -1,4 +1,6 @@
 FROM docker.io/library/golang:1.22-alpine AS build
+# Install gcc and other build dependencies
+RUN apk add. --no-cache gcc musl-dev
 WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download
