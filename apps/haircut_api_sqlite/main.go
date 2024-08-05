@@ -20,5 +20,5 @@ func main() {
 	routes.RegisterRouter(e)
 
 	// start server
-	e.Logger.Fatal(e.Start(":8000"))
+	e.Logger.Fatal(e.Start(":8889"))
 }
