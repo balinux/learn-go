@@ -3,7 +3,7 @@ WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download
 COPY . .
-RUN CGO_ENABLED=1 go build -o haircut-sqlite .
+RUN CGO_ENABLED=1 GOOS=linux GOARCH=amd64 go build -o haircut-sqlite .
 
 # add stage for scratch image
 FROM scratch
