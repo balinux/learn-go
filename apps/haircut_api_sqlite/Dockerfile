@@ -10,4 +10,4 @@ FROM scratch
 COPY --from=build /app/haircut-sqlite /haircut-sqlite
 COPY --from=build /app/haircut.db /haircut.db
 EXPOSE 8889
-CMD [ "/haircut-app" ]
+CMD [ "/haircut-sqlite" ]
