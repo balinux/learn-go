@@ -8,5 +8,5 @@ RUN CGO_ENABLED=0 go build -o haircut-app .
 # add stage for scratch image
 FROM scratch
 COPY --from=build /app/haircut-app /haircut-app
-EXPOSE 8000
+EXPOSE 8888
 CMD [ "/haircut-app" ]

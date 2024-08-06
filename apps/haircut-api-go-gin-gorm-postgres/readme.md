@@ -22,11 +22,11 @@ api yang dibuat untuk hair style denga go gin gorm dan database mysql
 
 ## running podman - build image
 
-`podman build -t haircut-image .`
+`podman build -t haircut:postgres .`
 
 ## podman - run container
 
-`podman run -d -p 9999:8000 -it --name haircut-container haircut-image`
+`podman run -d -p 8888:8888 -it --name haircut-postgres haircut:postgres`
 
 ## podman stop container
 
