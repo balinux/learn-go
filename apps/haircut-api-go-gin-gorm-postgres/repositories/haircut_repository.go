@@ -1,7 +1,7 @@
 package repositories
 
 import (
-	"haircut-api-go-gin-gorm-mysql/models"
+	"haircut-api-go-gin-gorm-postgres/models"
 
 	"gorm.io/gorm"
 )
@@ -24,7 +24,8 @@ func NewHaircutRepository(db *gorm.DB) HaircutRepository {
 
 // Create implements HaircutRepository.
 func (h *haircutRepository) Create(haircut models.Haircut) (models.Haircut, error) {
-	panic("unimplemented")
+	err := h.db.Create(&haircut).Error
+	return haircut, err
 }
 
 // Delete implements HaircutRepository.

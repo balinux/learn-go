@@ -35,3 +35,14 @@ api yang dibuat untuk hair style denga go gin gorm dan database mysql
 ## container delete all container
 
 `podman rm $(podman ps -a -q)`
+
+## test post data
+
+```bash
+curl -X POST http://localhost:8888/api/v1/haircuts \
+  -H "Content-Type: application/json" \
+  -d '{"name": "Short Trim", "description": "A quick short trim", "price": 15.99,"image": "https://cdnwpseller.g
+ramedia.net/wp-content/uploads/2022/06/15085945/gaya_model_rambut_undercut_2021_terbaru_discoonected_undercut-56
+1x625.jpg"}'
+
+```

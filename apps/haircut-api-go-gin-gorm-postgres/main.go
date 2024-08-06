@@ -1,18 +1,20 @@
 package main
 
 import (
-	"haircut-api-go-gin-gorm-mysql/config"
-	"haircut-api-go-gin-gorm-mysql/controllers"
-	"haircut-api-go-gin-gorm-mysql/repositories"
-	"haircut-api-go-gin-gorm-mysql/routes"
-	"haircut-api-go-gin-gorm-mysql/services"
+	"haircut-api-go-gin-gorm-postgres/config"
+	"haircut-api-go-gin-gorm-postgres/controllers"
+	"haircut-api-go-gin-gorm-postgres/repositories"
+	"haircut-api-go-gin-gorm-postgres/routes"
+	"haircut-api-go-gin-gorm-postgres/services"
 
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	// set the gin moe
-	gin.SetMode(gin.ReleaseMode)
+	// set the gin Release mode
+	// gin.SetMode(gin.ReleaseMode)
+	//
+	gin.SetMode(gin.DebugMode)
 
 	// config inisialisasi database koneksi
 	config.ConnectDatabase()
@@ -25,7 +27,7 @@ func main() {
 	// setup router
 	router := routes.SetupRouter(haircutController)
 
-	if err := router.Run(":8000"); err != nil {
+	if err := router.Run(":8888"); err != nil {
 		panic(err)
 	}
 }

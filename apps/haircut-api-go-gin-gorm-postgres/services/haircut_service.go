@@ -1,8 +1,9 @@
 package services
 
 import (
-	"haircut-api-go-gin-gorm-mysql/models"
-	"haircut-api-go-gin-gorm-mysql/repositories"
+	"errors"
+	"haircut-api-go-gin-gorm-postgres/models"
+	"haircut-api-go-gin-gorm-postgres/repositories"
 )
 
 type HaircutService interface {
@@ -19,7 +20,10 @@ type haircutService struct {
 
 // CreateHaircut implements HaircutService.
 func (h *haircutService) CreateHaircut(haircut models.Haircut) (models.Haircut, error) {
-	panic("unimplemented")
+	if haircut.Name == "" {
+		return models.Haircut{}, errors.New("haircut name is required")
+	}
+	return h.repository.Create(haircut)
 }
 
 // DeleteHaircut implements HaircutService.
