@@ -23,3 +23,15 @@ curl -X POST http://localhost:8080/api/haircuts \
   "price": 30.0
 }'
 ```
+
+## build image
+
+```bash
+podman build -t haircut:sqlite .
+```
+
+## running container
+
+```bash
+podman run -d -p 8889:8889 -it --name haircut-v1 haircut:sqlite
+```
