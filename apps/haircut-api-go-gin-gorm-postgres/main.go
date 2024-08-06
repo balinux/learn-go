@@ -12,9 +12,9 @@ import (
 
 func main() {
 	// set the gin Release mode
-	// gin.SetMode(gin.ReleaseMode)
+	gin.SetMode(gin.ReleaseMode)
 	//
-	gin.SetMode(gin.DebugMode)
+	// gin.SetMode(gin.DebugMode)
 
 	// config inisialisasi database koneksi
 	config.ConnectDatabase()
