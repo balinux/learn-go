@@ -14,7 +14,7 @@ Penjelasan Struktur Folder
 - create Haircut
 
 ```bash
-curl -X POST http://localhost:8080/api/haircuts \
+curl -X POST http://localhost:8889/api/haircuts \
 -H "Content-Type: application/json" \
 -d '{
   "id": 4,
