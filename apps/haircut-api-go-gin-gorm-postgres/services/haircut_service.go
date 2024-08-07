@@ -38,7 +38,7 @@ func (h *haircutService) GetAllHaircuts() ([]models.Haircut, error) {
 
 // GetHaircutByID implements HaircutService.
 func (h *haircutService) GetHaircutByID(id uint) (models.Haircut, error) {
-	panic("unimplemented")
+	return h.repository.FindByID(id)
 }
 
 // UpdateHaircut implements HaircutService.

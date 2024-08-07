@@ -42,7 +42,9 @@ func (h *haircutRepository) FindAll() ([]models.Haircut, error) {
 
 // FindByID implements HaircutRepository.
 func (h *haircutRepository) FindByID(id uint) (models.Haircut, error) {
-	panic("unimplemented")
+	var haircut models.Haircut
+	err := h.db.First(&haircut, id).Error
+	return haircut, err
 }
 
 // Update implements HaircutRepository.

@@ -4,6 +4,7 @@ import (
 	"haircut-api-go-gin-gorm-postgres/models"
 	"haircut-api-go-gin-gorm-postgres/services"
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
@@ -34,7 +35,22 @@ func (c *HaircutController) CreateHaircut(ctx *gin.Context) {
 	createHaircut, err := c.service.CreateHaircut(haircut)
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-
 	}
 	ctx.JSON(http.StatusCreated, createHaircut)
+}
+
+func (ctrl *HaircutController) GetHaircut(c *gin.Context) {
+	idParam := c.Param("id")
+	id, err := strconv.ParseUint(idParam, 10, 64)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid Id"})
+		return
+	}
+	haircut, err := ctrl.service.GetHaircutByID(uint(id))
+	if err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "haircut not found"})
+		return
+	}
+
+	c.JSON(http.StatusOK, haircut)
 }
